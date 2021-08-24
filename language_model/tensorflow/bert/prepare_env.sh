@@ -8,6 +8,7 @@ pip install tensorflow-gpu==1.15
 git clone https://github.com/baodii/training.git mlcommon_training
 git clone https://github.com/sgpyc/training sgpyc_training
 cd mlcommon_training
+git checkout bert_pretraining
 cp language_model/tensorflow/bert/pre_*.sh ../sgpyc_training/language_model/tensorflow/bert
 cp language_model/tensorflow/bert/cleanup_scripts/create_pre*.sh ../sgpyc_training/language_model/tensorflow/bert/cleanup_scripts
 cd ../sgpyc_training
