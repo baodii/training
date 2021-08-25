@@ -14,6 +14,7 @@ git checkout bert_fix
 cd ../mlcommon_training
 cp language_model/tensorflow/bert/pre_*.sh ../sgpyc_training/language_model/tensorflow/bert
 cp language_model/tensorflow/bert/cleanup_scripts/create_pre*.sh ../sgpyc_training/language_model/tensorflow/bert/cleanup_scripts
+cp language_model/tensorflow/bert/cleanup_scripts/download_and_uncompress.sh ../sgpyc_training/language_model/tensorflow/bert/cleanup_scripts
 cd ../sgpyc_training
 cd language_model/tensorflow/bert/cleanup_scripts
 mkdir tfrecord
