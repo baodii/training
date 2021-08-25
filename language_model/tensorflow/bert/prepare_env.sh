@@ -1,5 +1,5 @@
 # prepare conda env
-conda activate
+source activate
 conda create -n pre-training python=3.7 --yes
 conda activate pre-training
 pip install tensorflow-gpu==1.15
@@ -9,12 +9,17 @@ git clone https://github.com/baodii/training.git mlcommon_training
 git clone https://github.com/sgpyc/training sgpyc_training
 cd mlcommon_training
 git checkout bert_pretraining
+cd ../sgpyc_training
+git checkout bert_fix
+cd ../mlcommon_training
 cp language_model/tensorflow/bert/pre_*.sh ../sgpyc_training/language_model/tensorflow/bert
 cp language_model/tensorflow/bert/cleanup_scripts/create_pre*.sh ../sgpyc_training/language_model/tensorflow/bert/cleanup_scripts
 cd ../sgpyc_training
-git checkout bert_fix
 cd language_model/tensorflow/bert/cleanup_scripts
 mkdir tfrecord
+pip install gdown
+conda deactivate
+conda acitvate pre-training
 source download_and_umcompress.sh
 cd wiki/tf1_ckpt
 mv model.ckpt-28252.data-00000-of-00001 model.ckpt-28252
