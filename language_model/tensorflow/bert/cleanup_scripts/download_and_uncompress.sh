@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pip install --user gdown
+# pip install --user gdown
 
 mkdir -p wiki
 

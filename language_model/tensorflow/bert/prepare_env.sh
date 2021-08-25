@@ -20,7 +20,7 @@ mkdir tfrecord
 pip install gdown
 conda deactivate
 conda acitvate pre-training
-source download_and_umcompress.sh
+source download_and_uncompress.sh
 cd wiki/tf1_ckpt
 mv model.ckpt-28252.data-00000-of-00001 model.ckpt-28252
 cd ../..

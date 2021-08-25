@@ -8,7 +8,7 @@ python run_pretraining.py \
   --do_train \
   --eval_batch_size=8 \
   --learning_rate=0.0001 \
-  --init_checkpoint=./cleanup_scripts/wiki/tf2_ckpt/model.ckpt-28252 \
+  --init_checkpoint=./cleanup_scripts/wiki/tf1_ckpt/model.ckpt-28252 \
   --iterations_per_loop=1000 \
   --max_predictions_per_seq=76 \
   --max_seq_length=512 \
