@@ -1,4 +1,5 @@
 # prepare conda env
+sudo apt-get install lbzip2
 source activate
 conda create -n pre-training python=3.7 --yes
 conda activate pre-training

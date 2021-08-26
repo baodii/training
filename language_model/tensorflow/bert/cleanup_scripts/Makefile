@@ -1,10 +1,10 @@
-SHELL := /bin/zsh
+SHELL := /bin/bash
 
-seq := $(shell echo part_{00000..00010}_of_00500)
+seq := $(shell echo part-{00000..00010}-of-00500)
 # files = $(foreach var, $(seq), part_$(var)_of_00500) 
 files = $(seq)
 
-tfrecord/%_of_00500 : results/%_of_00500
+tfrecord/%-of-00500 : results/%-of-00500
 	python create_pretraining_data.py \
 		   --input_file=$< \
 		   --output_file=$@ \
@@ -19,4 +19,4 @@ tfrecord/%_of_00500 : results/%_of_00500
 all: $(addprefix tfrecord/, $(files))
 
 clean:
-	rm -rf result/*
+	rm -rf tfrecord/*
