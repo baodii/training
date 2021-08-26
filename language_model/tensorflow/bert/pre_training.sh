@@ -1,4 +1,4 @@
-export CUDA_VISIBLE_DEVICES=1
+# export CUDA_VISIBLE_DEVICES=1
 TF_XLA_FLAGS='--tf_xla_auto_jit=2' \
 python run_pretraining.py \
   --bert_config_file=./cleanup_scripts/wiki/bert_config.json \

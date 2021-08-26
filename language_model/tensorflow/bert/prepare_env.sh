@@ -15,12 +15,14 @@ cd ../mlcommon_training
 cp language_model/tensorflow/bert/pre_*.sh ../sgpyc_training/language_model/tensorflow/bert
 cp language_model/tensorflow/bert/cleanup_scripts/create_pre*.sh ../sgpyc_training/language_model/tensorflow/bert/cleanup_scripts
 cp language_model/tensorflow/bert/cleanup_scripts/download_and_uncompress.sh ../sgpyc_training/language_model/tensorflow/bert/cleanup_scripts
+cp language_model/tensorflow/bert/cleanup_scripts/Makefile ../sgpyc_training/language_model/tensorflow/bert/cleanup_scripts
 cd ../sgpyc_training
 cd language_model/tensorflow/bert/cleanup_scripts
 mkdir tfrecord
 pip install gdown
 conda deactivate
-conda acitvate pre-training
+source activate
+conda activate pre-training
 source download_and_uncompress.sh
 cd wiki/tf1_ckpt
 mv model.ckpt-28252.data-00000-of-00001 model.ckpt-28252
@@ -36,9 +38,15 @@ python wikiextractor/WikiExtractor.py wiki/enwiki-20200101-pages-articles-multis
 ./process_wiki.sh './text/*/wiki_??'
 
 # process pretraining data
-bash create_pretraining_data.sh
+pip install absl-py
+make -j128
 bash create_preeval_data.sh
 
+cd ../../../../../mlcommon_training/language_model/tensorflow/bert/
+rm -rf ./cleanup_scripts
+ln -s ../../../../sgpyc_training/language_model/tensorflow/bert/cleanup_scripts/ ./cleanup_scripts
 # pre-training
-cd ..
+# cd ..
+git clone https://github.com/mlperf/logging.git mlperf-logging
+pip install -e mlperf-logging
 bash pre_training.sh
